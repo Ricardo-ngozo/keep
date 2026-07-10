@@ -41,7 +41,7 @@ body {
   top: 0;
   z-index: 10;
   display: grid;
-  grid-template-columns: 48px 148px minmax(160px, 720px) 48px 48px;
+  grid-template-columns: 48px 210px minmax(160px, 720px) repeat(6, 48px);
   gap: 8px;
   align-items: center;
   height: 64px;
@@ -150,6 +150,32 @@ body.dark .nav-item.active { background: #5f4b12; color: #fff8df; }
   background: var(--surface);
   box-shadow: var(--shadow);
   overflow: visible;
+}
+
+.composer.collapsed {
+  box-shadow: 0 1px 6px rgba(60, 64, 67, .28);
+}
+
+.quick-compose {
+  display: grid;
+  grid-template-columns: 1fr 48px 48px 48px;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 8px 0 16px;
+  color: var(--muted);
+  cursor: text;
+}
+
+.composer.collapsed .title-input,
+.composer.collapsed #bodyInput,
+.composer.collapsed .check-editor,
+.composer.collapsed .image-preview,
+.composer.collapsed .composer-tools {
+  display: none;
+}
+
+.composer:not(.collapsed) .quick-compose {
+  display: none;
 }
 
 .title-input,
@@ -343,9 +369,10 @@ dialog::backdrop { background: rgba(0, 0, 0, .38); }
 }
 
 @media (max-width: 720px) {
-  .topbar { grid-template-columns: 42px 1fr 42px 42px; height: auto; }
+  .topbar { grid-template-columns: 42px 1fr 42px 42px 42px; height: auto; }
   .brand { font-size: 18px; }
   .search { grid-column: 1 / -1; grid-row: 2; }
+  .topbar .icon-button:nth-of-type(n+4) { display: none; }
   .shell { display: block; }
   .sidebar {
     position: static;
