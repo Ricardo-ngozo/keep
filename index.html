@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Keep Clone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./keep-clone.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <button class="icon-button" id="menuButton" title="Menu"><span class="material-symbols-outlined">menu</span></button>
+      <div class="brand"><span class="material-symbols-outlined">lightbulb</span><strong>Keep</strong></div>
+      <label class="search"><span class="material-symbols-outlined">search</span><input id="searchInput" type="search" aria-label="Search notes"></label>
+      <button class="icon-button" id="themeButton" title="Theme"><span class="material-symbols-outlined">dark_mode</span></button>
+      <button class="icon-button" id="exportButton" title="Export notes"><span class="material-symbols-outlined">download</span></button>
+    </header>
+
+    <div class="shell">
+      <aside class="sidebar" id="sidebar">
+        <button class="nav-item active" data-view="notes"><span class="material-symbols-outlined">emoji_objects</span><span>Notes</span></button>
+        <button class="nav-item" data-view="reminders"><span class="material-symbols-outlined">notifications</span><span>Reminders</span></button>
+        <button class="nav-item" data-view="archive"><span class="material-symbols-outlined">archive</span><span>Archive</span></button>
+        <button class="nav-item" data-view="trash"><span class="material-symbols-outlined">delete</span><span>Trash</span></button>
+        <div class="label-list" id="labelList"></div>
+      </aside>
+
+      <main class="content">
+        <section class="composer" id="composer">
+          <input id="titleInput" class="title-input" aria-label="Title">
+          <textarea id="bodyInput" rows="2" aria-label="Note"></textarea>
+          <div class="check-editor" id="checkEditor"></div>
+          <img id="imagePreview" class="image-preview" alt="">
+          <div class="composer-tools">
+            <button class="tool" id="checkModeButton" title="Checklist"><span class="material-symbols-outlined">check_box</span></button>
+            <button class="tool" id="pinButton" title="Pin"><span class="material-symbols-outlined">push_pin</span></button>
+            <button class="tool" id="reminderButton" title="Reminder"><span class="material-symbols-outlined">add_alert</span></button>
+            <button class="tool" id="imageButton" title="Add image"><span class="material-symbols-outlined">image</span></button>
+            <button class="tool" id="colorButton" title="Color"><span class="material-symbols-outlined">palette</span></button>
+            <button class="tool" id="labelButton" title="Label"><span class="material-symbols-outlined">label</span></button>
+            <input id="fileInput" type="file" accept="image/*" hidden>
+            <button class="close-button" id="saveButton">Close</button>
+          </div>
+          <div class="pop" id="colorPop"></div>
+          <div class="pop label-pop" id="labelPop">
+            <input id="labelInput" aria-label="Label name">
+            <button id="addLabelButton">Add</button>
+          </div>
+          <div class="pop reminder-pop" id="reminderPop">
+            <input id="reminderInput" type="datetime-local" aria-label="Reminder time">
+            <button id="setReminderButton">Set</button>
+          </div>
+        </section>
+
+        <section id="bulkBar" class="bulk-bar hidden">
+          <span id="selectedCount">0 selected</span>
+          <button class="tool" data-bulk="pin" title="Pin"><span class="material-symbols-outlined">push_pin</span></button>
+          <button class="tool" data-bulk="archive" title="Archive"><span class="material-symbols-outlined">archive</span></button>
+          <button class="tool" data-bulk="delete" title="Delete"><span class="material-symbols-outlined">delete</span></button>
+          <button class="tool" data-bulk="clear" title="Clear selection"><span class="material-symbols-outlined">close</span></button>
+        </section>
+
+        <section class="section-block" id="pinnedSection">
+          <h2>Pinned</h2>
+          <div class="notes-grid" id="pinnedGrid"></div>
+        </section>
+        <section class="section-block">
+          <h2 id="mainHeading">Notes</h2>
+          <div class="notes-grid" id="notesGrid"></div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="editDialog">
+      <form method="dialog" class="dialog-card">
+        <input id="editTitle" aria-label="Edit title">
+        <textarea id="editBody" rows="8" aria-label="Edit note"></textarea>
+        <div id="editChecklist" class="check-editor"></div>
+        <div class="dialog-actions">
+          <button id="editChecklistButton" type="button" class="tool" title="Checklist"><span class="material-symbols-outlined">check_box</span></button>
+          <button id="editSaveButton">Done</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="./keep-clone.js"></script>
+  </body>
+</html>
