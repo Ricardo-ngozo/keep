@@ -7,13 +7,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./keep-clone.css">
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
     <header class="topbar">
       <button class="icon-button" id="menuButton" title="Menu"><span class="material-symbols-outlined">menu</span></button>
       <div class="brand"><span class="material-symbols-outlined">lightbulb</span><strong>Keep</strong></div>
       <label class="search"><span class="material-symbols-outlined">search</span><input id="searchInput" type="search" aria-label="Search notes"></label>
+      <button class="icon-button" title="Refresh"><span class="material-symbols-outlined">refresh</span></button>
+      <button class="icon-button" title="List view"><span class="material-symbols-outlined">view_agenda</span></button>
+      <button class="icon-button" title="Settings"><span class="material-symbols-outlined">settings</span></button>
+      <button class="icon-button" title="Apps"><span class="material-symbols-outlined">apps</span></button>
       <button class="icon-button" id="themeButton" title="Theme"><span class="material-symbols-outlined">dark_mode</span></button>
       <button class="icon-button" id="exportButton" title="Export notes"><span class="material-symbols-outlined">download</span></button>
     </header>
@@ -28,18 +32,28 @@
       </aside>
 
       <main class="content">
-        <section class="composer" id="composer">
-          <input id="titleInput" class="title-input" aria-label="Title">
-          <textarea id="bodyInput" rows="2" aria-label="Note"></textarea>
+        <section class="composer collapsed" id="composer">
+          <div class="quick-compose" id="quickCompose">
+            <span>Take a note...</span>
+            <button class="tool" id="quickCheckButton" title="New list"><span class="material-symbols-outlined">check_box</span></button>
+            <button class="tool" title="Drawing"><span class="material-symbols-outlined">brush</span></button>
+            <button class="tool" id="quickImageButton" title="New image note"><span class="material-symbols-outlined">image</span></button>
+          </div>
+          <input id="titleInput" class="title-input" aria-label="Title" placeholder="Title">
+          <textarea id="bodyInput" rows="2" aria-label="Note" placeholder="Take a note..."></textarea>
           <div class="check-editor" id="checkEditor"></div>
           <img id="imagePreview" class="image-preview" alt="">
           <div class="composer-tools">
             <button class="tool" id="checkModeButton" title="Checklist"><span class="material-symbols-outlined">check_box</span></button>
             <button class="tool" id="pinButton" title="Pin"><span class="material-symbols-outlined">push_pin</span></button>
             <button class="tool" id="reminderButton" title="Reminder"><span class="material-symbols-outlined">add_alert</span></button>
+            <button class="tool" title="Collaborator"><span class="material-symbols-outlined">person_add</span></button>
             <button class="tool" id="imageButton" title="Add image"><span class="material-symbols-outlined">image</span></button>
             <button class="tool" id="colorButton" title="Color"><span class="material-symbols-outlined">palette</span></button>
             <button class="tool" id="labelButton" title="Label"><span class="material-symbols-outlined">label</span></button>
+            <button class="tool" title="More"><span class="material-symbols-outlined">more_vert</span></button>
+            <button class="tool" title="Undo"><span class="material-symbols-outlined">undo</span></button>
+            <button class="tool" title="Redo"><span class="material-symbols-outlined">redo</span></button>
             <input id="fileInput" type="file" accept="image/*" hidden>
             <button class="close-button" id="saveButton">Close</button>
           </div>
@@ -85,6 +99,6 @@
       </form>
     </dialog>
 
-    <script src="./keep-clone.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
